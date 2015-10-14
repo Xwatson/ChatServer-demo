@@ -3,8 +3,7 @@
  */
 
 var mongoose = require('mongoose');
-var userSchema = require('../schemas/user');
-var User = mongoose.model('user',userSchema);
+var User = mongoose.model('User');
 var moment = require('moment')();
 var token = require('./token');
 var jsonpCB='angular.callbacks._0';
