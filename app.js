@@ -5,10 +5,10 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3000;//数据服务端口
 var app = express();
 var http = require('http').Server(app);
-var socketIo = require('socket.io')(http).listen(3001);
+var socketIo = require('socket.io')(http).listen(3001);//websocket端口
 var fs = require('fs');
 var dbUrl = 'mongodb://localhost/xinlingjitang';
 mongoose.connect(dbUrl);
