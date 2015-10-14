@@ -12,7 +12,26 @@ var socketIo = require('socket.io')(http).listen(3001);
 var fs = require('fs');
 var dbUrl = 'mongodb://localhost/xinlingjitang';
 mongoose.connect(dbUrl);
+// 加载models
+var models_path = __dirname + '/app/models';
+var walk = function(path) {
+    fs
+        .readdirSync(path)
+        .forEach(function(file) {
+            var newPath = path + '/' + file;
+            var stat = fs.statSync(newPath);
 
+            if (stat.isFile()) {
+                if (/(.*)\.(js|coffee)/.test(file)) {
+                    require(newPath)
+                }
+            }
+            else if (stat.isDirectory()) {
+                walk(newPath)
+            }
+        })
+}
+walk(models_path);
 app.set('views', './app/views');
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({entended:false}));
@@ -32,7 +51,7 @@ app.listen(port);
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-console.log('xinlingjitang服务器启动 端口：'+port);
+console.log('xljt服务器启动 端口：'+port);
 //状态码
 /*
 200:成功
