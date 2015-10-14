@@ -2,7 +2,7 @@
  * Created by xuwusheng on 15/8/11.
  */
 var mongoose = require('mongoose');
-var User = mongoose.model('user',require('../schemas/user'));
+var User = mongoose.model('User');
 var moment = require('moment')();
 module.exports= function (io) {
     var connectCount=0;
