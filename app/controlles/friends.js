@@ -3,8 +3,7 @@
  */
 
 var mongoose = require('mongoose');
-var userSchema = require('../schemas/user');
-var User = mongoose.model('user',userSchema);
+var User = mongoose.model('User');
 var moment = require('moment')();
 //登录
 module.exports.myFriends = function (req, res) {
